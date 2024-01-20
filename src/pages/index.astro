@@ -1,7 +1,9 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Section from "../components/section/Section.astro";
-import Badge from "../components/badge/badge.astro";
+import Badge from "../components/badge/Badge.astro";
+import { PERSONAL_INFO, SOCIAL_NETWORKS } from "../constants";
+import getWorkTime from "../helpers/getWorkTimeHelper";
 ---
 
 <Layout
@@ -13,8 +15,9 @@ import Badge from "../components/badge/badge.astro";
       <h1
         class="text-gray-900 dark:text-white text-3xl md:text-4xl lg:text-5xl font-bold flex flex-row gap-x-4 pb-6 lg:pb-10"
       >
-        Hey, soy Diego Páez <a
-          href="https://linkedin.com/in/midudev"
+        Hey, soy {PERSONAL_INFO.FULLNAME}
+        <a
+          href={SOCIAL_NETWORKS.LINKEDIN}
           target="_blank"
           rel="noopener"
           class="flex justify-center items-center hover:scale-105 transition"
@@ -25,13 +28,15 @@ import Badge from "../components/badge/badge.astro";
       <h2
         class="text-xl lg:text-2xl text-balance max-w-[700px] text-black dark:text-white"
       >
-        <span>+1 año de experiencia.</span><span
-          class="text-yellow-800 dark:text-yellow-200"
-        >
+        <span
+          >+{getWorkTime(PERSONAL_INFO.WORK_START_DATE)} año{
+            getWorkTime(PERSONAL_INFO.WORK_START_DATE) !== 1 && "s"
+          } de experiencia.</span
+        ><span class="text-yellow-800 dark:text-yellow-200">
           Desarrollador Web FullStack</span
         >
         .<span class="text-red-800 dark:text-red-200">
-          De Argentina, Tucumán</span
+          De {PERSONAL_INFO.COUNTRY}, {PERSONAL_INFO.LOCATION}</span
         >.
         <span class="text-sky-800 dark:text-sky-200"
           >Especializado en crear aplicaciones únicas.</span
