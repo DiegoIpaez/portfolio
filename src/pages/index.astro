@@ -1,10 +1,11 @@
 ---
-import { PERSONAL_INFO, SOCIAL_NETWORKS } from "../constants";
+import { EXPERIENCIE, PERSONAL_INFO, SOCIAL_NETWORKS } from "../constants";
 import getWorkTime from "../helpers/getWorkTimeHelper";
 
 import Layout from "../layouts/Layout.astro";
 import Section from "../components/section/Section.astro";
 import Badge from "../components/badge/Badge.astro";
+import Experience from "../components/experience/Experience.astro";
 import SocialPill from "../components/socialPill/SocialPill.astro";
 
 import GitHubIcon from "../components/icons/GithubIcon.astro";
@@ -62,6 +63,23 @@ import MailIcon from "../components/icons/MailIcon.astro";
           Mail
         </SocialPill>
       </nav>
+    </Section>
+    <Section id="experiencia">
+      <h2
+        class="text-3xl font-semibold mb-6 flex gap-x-3 items-center text-black/80 dark:text-white/80"
+      >
+        <!-- <Briefcase class="size-7" /> -->
+        Experiencia laboral
+      </h2>
+      <ol class="relative border-s border-gray-200 ml-3">
+        {
+          EXPERIENCIE.map((experiencie) => (
+            <li class="mb-10 ms-4">
+              <Experience {...experiencie} />
+            </li>
+          ))
+        }
+      </ol>
     </Section>
   </main>
 </Layout>
