@@ -1,9 +1,15 @@
 ---
+import { PERSONAL_INFO, SOCIAL_NETWORKS } from "../constants";
+import getWorkTime from "../helpers/getWorkTimeHelper";
+
 import Layout from "../layouts/Layout.astro";
 import Section from "../components/section/Section.astro";
 import Badge from "../components/badge/Badge.astro";
-import { PERSONAL_INFO, SOCIAL_NETWORKS } from "../constants";
-import getWorkTime from "../helpers/getWorkTimeHelper";
+import SocialPill from "../components/socialPill/SocialPill.astro";
+
+import GitHubIcon from "../components/icons/GithubIcon.astro";
+import LinkedInIcon from "../components/icons/LinkedInIcon.astro";
+import MailIcon from "../components/icons/MailIcon.astro";
 ---
 
 <Layout
@@ -11,7 +17,7 @@ import getWorkTime from "../helpers/getWorkTimeHelper";
   description="Contrata a Diego Páez para crear tu aplicación web o móvil. Desarrollador Web y Creador de Contenido. Especializado en crear aplicaciones únicas."
 >
   <main>
-    <Section class="py-44 pb-32">
+    <Section class="py-20 pb-32">
       <h1
         class="text-gray-900 dark:text-white text-3xl md:text-4xl lg:text-5xl font-bold flex flex-row gap-x-4 pb-6 lg:pb-10"
       >
@@ -42,6 +48,20 @@ import getWorkTime from "../helpers/getWorkTimeHelper";
           >Especializado en crear aplicaciones únicas.</span
         >
       </h2>
+      <nav class="flex gap-4 mt-8 flex-wrap">
+        <SocialPill href={SOCIAL_NETWORKS.LINKEDIN}>
+          <LinkedInIcon class="size-4 md:size-6" />
+          LinkedIn
+        </SocialPill>
+        <SocialPill href={SOCIAL_NETWORKS.GITHUB}>
+          <GitHubIcon class="size-4 md:size-6" />
+          GitHub
+        </SocialPill>
+        <SocialPill href={`mailto:${SOCIAL_NETWORKS.GMAIL}`}>
+          <MailIcon class="size-4 md:size-6" />
+          Mail
+        </SocialPill>
+      </nav>
     </Section>
   </main>
 </Layout>
