@@ -1,0 +1,23 @@
+---
+import { EXPERIENCIE } from "../../constants";
+
+import Section from "../section/Section.astro";
+import Experience from "../experience/Experience.astro";
+---
+
+<Section id="experiencia">
+  <h2
+    class="text-3xl font-semibold mb-6 flex gap-x-3 items-center text-black/80 dark:text-white/80"
+  >
+    Experiencia laboral
+  </h2>
+  <ol class="relative border-s border-gray-200 ml-3">
+    {
+      EXPERIENCIE.map((experiencie) => (
+        <li class="mb-10 ms-4">
+          <Experience {...experiencie} />
+        </li>
+      ))
+    }
+  </ol>
+</Section>

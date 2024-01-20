@@ -1,16 +1,8 @@
 ---
-import { EXPERIENCIE, PERSONAL_INFO, SOCIAL_NETWORKS } from "../constants";
-import getWorkTime from "../helpers/getWorkTimeHelper";
-
 import Layout from "../layouts/Layout.astro";
-import Section from "../components/section/Section.astro";
-import Badge from "../components/badge/Badge.astro";
-import Experience from "../components/experience/Experience.astro";
-import SocialPill from "../components/socialPill/SocialPill.astro";
-
-import GitHubIcon from "../components/icons/GithubIcon.astro";
-import LinkedInIcon from "../components/icons/LinkedInIcon.astro";
-import MailIcon from "../components/icons/MailIcon.astro";
+import SectionExperience from "../components/home/SectionExperience.astro";
+import SectionWelcome from "../components/home/SectionWelcome.astro";
+import SectionProyects from "../components/home/SectionProyects.astro";
 ---
 
 <Layout
@@ -18,68 +10,8 @@ import MailIcon from "../components/icons/MailIcon.astro";
   description="Contrata a Diego Páez para crear tu aplicación web o móvil. Desarrollador Web y Creador de Contenido. Especializado en crear aplicaciones únicas."
 >
   <main>
-    <Section class="py-20 pb-32">
-      <h1
-        class="text-gray-900 dark:text-white text-3xl md:text-4xl lg:text-5xl font-bold flex flex-row gap-x-4 pb-6 lg:pb-10"
-      >
-        Hey, soy {PERSONAL_INFO.FULLNAME}
-        <a
-          href={SOCIAL_NETWORKS.LINKEDIN}
-          target="_blank"
-          rel="noopener"
-          class="flex justify-center items-center hover:scale-105 transition"
-        >
-          <Badge>Disponible para trabajar</Badge>
-        </a>
-      </h1>
-      <h2
-        class="text-xl lg:text-2xl text-balance max-w-[700px] text-black dark:text-white"
-      >
-        <span
-          >+{getWorkTime(PERSONAL_INFO.WORK_START_DATE)} año{
-            getWorkTime(PERSONAL_INFO.WORK_START_DATE) !== 1 && "s"
-          } de experiencia.</span
-        ><span class="text-yellow-800 dark:text-yellow-200">
-          Desarrollador Web FullStack</span
-        >
-        .<span class="text-red-800 dark:text-red-200">
-          De {PERSONAL_INFO.COUNTRY}, {PERSONAL_INFO.LOCATION}</span
-        >.
-        <span class="text-sky-800 dark:text-sky-200"
-          >Especializado en crear aplicaciones únicas.</span
-        >
-      </h2>
-      <nav class="flex gap-4 mt-8 flex-wrap">
-        <SocialPill href={SOCIAL_NETWORKS.LINKEDIN}>
-          <LinkedInIcon class="size-4 md:size-6" />
-          LinkedIn
-        </SocialPill>
-        <SocialPill href={SOCIAL_NETWORKS.GITHUB}>
-          <GitHubIcon class="size-4 md:size-6" />
-          GitHub
-        </SocialPill>
-        <SocialPill href={`mailto:${SOCIAL_NETWORKS.GMAIL}`}>
-          <MailIcon class="size-4 md:size-6" />
-          Mail
-        </SocialPill>
-      </nav>
-    </Section>
-    <Section id="experiencia">
-      <h2
-        class="text-3xl font-semibold mb-6 flex gap-x-3 items-center text-black/80 dark:text-white/80"
-      >
-        <!-- <Briefcase class="size-7" /> -->
-        Experiencia laboral
-      </h2>
-      <ol class="relative border-s border-gray-200 ml-3">
-        {
-          EXPERIENCIE.map((experiencie) => (
-            <li class="mb-10 ms-4">
-              <Experience {...experiencie} />
-            </li>
-          ))
-        }
-      </ol>
-    </Section>
+    <SectionWelcome />
+    <SectionExperience />
+    <SectionProyects />
   </main>
 </Layout>
