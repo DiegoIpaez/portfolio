@@ -1,0 +1,59 @@
+---
+import { PERSONAL_INFO, SOCIAL_NETWORKS } from "@/constants";
+import getWorkTime from "@/helpers/getWorkTimeHelper";
+
+import Section from "../section/Section.astro";
+import Badge from "../badge/Badge.astro";
+import SocialPill from "../socialPill/SocialPill.astro";
+
+import GitHubIcon from "../icons/GithubIcon.astro";
+import LinkedInIcon from "../icons/LinkedInIcon.astro";
+import MailIcon from "../icons/MailIcon.astro";
+---
+
+<Section class="py-20">
+  <h1
+    class="text-gray-900 dark:text-white text-3xl md:text-4xl lg:text-5xl font-bold flex flex-row gap-x-4 pb-6 lg:pb-10"
+  >
+    Hey, soy {PERSONAL_INFO.FULLNAME}
+    <a
+      href={SOCIAL_NETWORKS.LINKEDIN}
+      target="_blank"
+      rel="noopener"
+      class="flex justify-center items-center hover:scale-105 transition"
+    >
+      <Badge>Disponible para trabajar</Badge>
+    </a>
+  </h1>
+  <h2
+    class="text-xl lg:text-2xl text-balance max-w-[700px] text-black dark:text-white"
+  >
+    <span
+      >+{getWorkTime(PERSONAL_INFO.WORK_START_DATE)} año{
+        getWorkTime(PERSONAL_INFO.WORK_START_DATE) !== 1 && "s"
+      } de experiencia.</span
+    ><span class="text-yellow-800 dark:text-yellow-200">
+      Desarrollador Web FullStack</span
+    >
+    .<span class="text-red-800 dark:text-red-200">
+      De {PERSONAL_INFO.COUNTRY}, {PERSONAL_INFO.LOCATION}</span
+    >. <br />
+    <span class="text-sky-800 dark:text-sky-200"
+      >Resolver problemas y afrontar retos es mi <br /> especialidad.</span
+    >
+  </h2>
+  <nav class="flex gap-4 mt-8 flex-wrap">
+    <SocialPill href={SOCIAL_NETWORKS.LINKEDIN}>
+      <LinkedInIcon class="size-4 md:size-6" />
+      LinkedIn
+    </SocialPill>
+    <SocialPill href={SOCIAL_NETWORKS.GITHUB}>
+      <GitHubIcon class="size-4 md:size-6" />
+      GitHub
+    </SocialPill>
+    <SocialPill href={`mailto:${SOCIAL_NETWORKS.GMAIL}`}>
+      <MailIcon class="size-4 md:size-6" />
+      Mail
+    </SocialPill>
+  </nav>
+</Section>

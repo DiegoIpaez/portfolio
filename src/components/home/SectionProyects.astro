@@ -1,0 +1,57 @@
+---
+import Section from "../section/Section.astro";
+import Project from "../project/Project.astro";
+
+import NextJS from "../icons/GithubIcon.astro";
+import Tailwind from "../icons/GithubIcon.astro";
+import CodeIcon from "../icons/CodeIcon.astro";
+
+interface IProject {
+  title: string;
+  description: string;
+  link: string;
+  github?: string;
+  image: string;
+  tags: any[];
+}
+
+const TAGS = {
+  NEXT: {
+    name: "Next.js",
+    class: "bg-black text-white",
+    icon: NextJS,
+  },
+  TAILWIND: {
+    name: "Tailwind CSS",
+    class: "bg-[#003159] text-white",
+    icon: Tailwind,
+  },
+};
+
+const PROJECTS: IProject[] = [
+  {
+    title: "SocketChat",
+    description: "Plataforma web de mensajería en tiempo real.",
+    link: "https://socket-chat-fe.vercel.app/",
+    github: "https://github.com/DiegoIpaez/socket-chat-fe",
+    image: "assets/projects/socket_chat.JPG",
+    tags: [TAGS.NEXT, TAGS.TAILWIND],
+  },
+];
+---
+
+<Section id="proyectos">
+  <h2
+    class="text-3xl font-semibold mb-6 flex gap-x-3 items-center text-black/80 dark:text-white/80"
+  >
+    <CodeIcon class="size-7" />
+    Proyectos
+  </h2>
+  {
+    PROJECTS.map((projects) => (
+      <section class="flex flex-col gap-y-16 mb-10">
+        <Project {...projects} />
+      </section>
+    ))
+  }
+</Section>
